@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Troubleshooting Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        #chatbox {
+            width: 80%;
+            height: 400px;
+            border: 1px solid #140202fb;
+            overflow-y: scroll;
+            background: rgb(255, 255, 255);
+            margin: auto;
+            padding: 10px;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>IT Troubleshooting Assistant</h2>
+    <div id="chatbox">
+        <p><strong>Bot:</strong> Hi! How can I help you with your IT issue?</p>
+    </div>
+    <input type="text" id="userInput" placeholder="Type your problem here..." size="50">
+    <button onclick="getResponse()">Ask</button>
+
+    <script>
+        function getResponse() {
+            let userText = document.getElementById("userInput").value.trim();
+            let chatbox = document.getElementById("chatbox");
+
+            if (userText === "") {
+                return;
+            }
+
+            let userMessage = "<p><strong>You:</strong> " + userText + "</p>";
+            chatbox.innerHTML += userMessage;
+
+            let botResponse = troubleshoot(userText);
+            let botMessage = "<p><strong>Bot:</strong> " + botResponse + "</p>";
+            chatbox.innerHTML += botMessage;
+
+            document.getElementById("userInput").value = "";
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function troubleshoot(issue) {
+            issue = issue.toLowerCase();
+
+            let solutions = {
+                // Hardware Issues
+                "slow pc": "Try clearing temporary files, upgrading RAM, or using an SSD for better speed.",
+                "computer won't turn on": "Check power cables, battery, and try a different power outlet.",
+                "cpu overheating": "Clean the cooling fan, apply new thermal paste, and improve airflow.",
+                "gpu not detected": "Check PCIe connection, update drivers, and test with another PC.",
+                "ram issues": "Reseat the RAM sticks, clean the slots, and try one stick at a time.",
+                "hard drive not detected": "Check cables, test with another port, and try a different SATA cable.",
+                "power supply failure": "Test with another PSU, check for burning smell or faulty cables.",
+
+                // Software Issues
+                "windows won't boot": "Boot into Safe Mode, run startup repair, or reinstall Windows.",
+                "application crashes": "Update the software, check for compatibility, and reinstall if needed.",
+                "drivers not working": "Update or reinstall drivers from Device Manager.",
+                "virus detected": "Run a full antivirus scan and remove threats.",
+                "windows update stuck": "Restart your PC, use Windows Update Troubleshooter, or reset update components.",
+                "system freezing": "Check for overheating, update drivers, and scan for malware.",
+
+                // Network Issues
+                "no internet": "Restart your router, check Wi-Fi settings, or reset network settings.",
+                "slow internet": "Move closer to the router, clear cache, and disable background downloads.",
+                "ethernet not working": "Check cables, update network drivers, and reset the network adapter.",
+                "wifi not connecting": "Forget the network and reconnect, restart the router, and check for IP conflicts.",
+                "dns issues": "Use Google DNS (8.8.8.8, 8.8.4.4) or flush DNS cache using 'ipconfig /flushdns'.",
+
+                // Peripheral Issues
+                "keyboard not working": "Try a different USB port, clean the keys, or check for stuck keys.",
+                "mouse not working": "Replace batteries (if wireless), test another port, or try another mouse.",
+                "printer not responding": "Check connections, restart printer, and reinstall printer drivers.",
+                "monitor no display": "Check cable connections, test with another monitor, or reset display settings.",
+                "projector not connecting": "Ensure correct input is selected and update display drivers.",
+                "headphones not working": "Check if muted, test on another device, and update audio drivers.",
+
+                // Security & Maintenance
+                "forgot password": "Use password reset options or boot into recovery mode.",
+                "firewall blocking app": "Allow the app through Windows Firewall or disable temporarily.",
+                "data recovery": "Use recovery software like Recuva, or restore from a backup.",
+                "backup files": "Use cloud services or external drives for automatic backups.",
+                "system restore": "Use Windows System Restore to roll back to a working state.",
+
+                // Miscellaneous
+                "screen flickering": "Update display drivers, disable hardware acceleration in browsers.",
+                "usb device not recognized": "Try another port, reinstall USB drivers, or test on another PC.",
+                "black screen": "Check if the display is on, use Ctrl + Alt + Delete, and restart PC.",
+                "overheating": "Clean dust buildup, improve cooling, and avoid blocking vents.",
+                "battery draining fast": "Reduce screen brightness, close background apps, and check battery health.",
+                "blue screen of death": "Run hardware diagnostics, check drivers, and scan for malware."
+            };
+
+            for (let key in solutions) {
+                if (issue.includes(key)) {
+                    return solutions[key];
+                }
+            }
+
+            return "I'm not sure. Try restarting your device, checking connections, or searching online for more solutions.";
+        }
+    </script>
+</body>
+</html>
