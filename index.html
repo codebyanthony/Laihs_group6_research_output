@@ -14,7 +14,7 @@
         }
         .sidebar {
             width: 250px;
-            background: #007bff;
+            background: #0179fa;
             color: white;
             padding: 15px;
             height: 100vh;
@@ -46,6 +46,14 @@
             background-color: #1e1e1e;
             color: #ffffff;
         }
+        .dark-mode .sidebar {
+            background: #333;
+        }
+        .troubleshoot-section {
+            display: none;
+            text-align: left;
+            padding: 10px;
+        }
         .chatbox {
             max-height: 300px;
             overflow-y: auto;
@@ -75,21 +83,92 @@
             border-radius: 5px;
             border: 1px solid #ccc;
         }
+        .faq-section {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+            color: #007bff;
+        }
+        .faq-answer {
+            display: none;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <h2>IT Troubleshooting</h2>
+        <button onclick="toggleSection('hardware')">🔧 Hardware Issues</button>
+        <button onclick="toggleSection('software')">💻 Software Issues</button>
         <button onclick="toggleDarkMode()">🌙 Toggle Dark/Light Mode</button>
+        <button onclick="toggleSection('Researchers')">📌 Researchers</button>
     </div>
+
     <div class="container">
         <h1>Welcome to the IT Troubleshooting Assistant</h1>
+
+        <div id="hardware" class="troubleshoot-section">
+            <h3>🔧 Hardware Problems</h3>
+            <ul>
+                <li>Computer won't turn on</li>
+                <li>Black screen on startup</li>
+                <li>CPU Overheating</li>
+                <li>Keyboard not working</li>
+                <li>Mouse not responding</li>
+                <li>USB device not recognized</li>
+                <li>Printer not working</li>
+                <li>Monitor flickering</li>
+                <li>Hard drive not detected</li>
+            </ul>
+        </div>
+
+        <div id="software" class="troubleshoot-section">
+            <h3>💻 Software Problems</h3>
+            <ul>
+                <li>No internet</li>
+                <li>WiFi not working</li>
+                <li>Slow PC</li>
+                <li>Software crashing frequently</li>
+                <li>Blue screen errors</li>
+                <li>Sound not working</li>
+                <li>Antivirus issues</li>
+                <li>Files missing or corrupted</li>
+                <li>No display</li>
+            </ul>
+        </div>
+        
+        <div id="Researchers" class="troubleshoot-section">
+            <h3>📌 researchers</h3>
+            <ul>
+                <li>Earl Anthony T. Tangilon</li>
+                <li>Francine Rizza A. Arevalo</li>
+                <li>Mary Elizabeth P. Serrano</li>
+                <li>John Ryan B. Lunas</li>
+                <li>Jhonrey Quimm C. Tibi</li>
+            </ul>
+        </div>
+
         <h2>Chat with AI</h2>
         <div class="chatbox" id="chatbox">
             <p class="message">👋 Hi! What IT issue are you facing?</p>
         </div>
         <input type="text" id="userInput" placeholder="Describe your issue...">
         <button onclick="sendMessage()">Send</button>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <p class="faq-question" onclick="toggleFAQ(1)">❓ How do I fix a slow PC?</p>
+            <p class="faq-answer" id="faq1">Close unnecessary programs, clear temporary files, update drivers, and scan for malware.</p>
+
+            <p class="faq-question" onclick="toggleFAQ(2)">❓ What should I do if my WiFi stops working?</p>
+            <p class="faq-answer" id="faq2">Restart your router, ensure you're connected to the right network, and update your network drivers.</p>
+
+            <p class="faq-question" onclick="toggleFAQ(3)">❓ How do I fix a black screen issue?</p>
+            <p class="faq-answer" id="faq3">Check monitor cables, restart in Safe Mode, and update graphics drivers.</p>
+        </div>
     </div>
     
     <script>
@@ -98,7 +177,8 @@
             if (input === "") return;
 
             let chatbox = document.getElementById("chatbox");
-            chatbox.innerHTML += `<p class="message user-message">${input}</p>`;
+            let userMessage = `<p class="message user-message">${input}</p>`;
+            chatbox.innerHTML += userMessage;
 
             let solutions = {
                 "slow pc": "Try clearing temporary files, upgrading RAM, or using an SSD for better speed.",
@@ -156,11 +236,19 @@
             document.getElementById("userInput").value = "";
         }
 
+        function toggleSection(section) {
+            let sections = document.querySelectorAll('.troubleshoot-section');
+            sections.forEach(sec => sec.style.display = "none");
+            document.getElementById(section).style.display = "block";
+        }
+
+        function toggleFAQ(num) {
+            let answer = document.getElementById("faq" + num);
+            answer.style.display = (answer.style.display === "none" || answer.style.display === "") ? "block" : "none";
+        }
+
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
-            document.querySelectorAll(".sidebar, .chatbox, .container").forEach(el => {
-                el.classList.toggle("dark-mode");
-            });
         }
     </script>
 </body>
