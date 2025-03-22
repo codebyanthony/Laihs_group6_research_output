@@ -1,0 +1,151 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar {
+    width: 250px;
+    background: #0179fa;
+    color: white;
+    padding: 15px;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background: white;
+    color: #007bff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sidebar button:hover {
+    background: #0056b3;
+    color: white;
+}
+
+.container {
+    margin-left: 270px;
+    padding: 20px;
+    flex: 1;
+    text-align: left;
+}
+
+.dark-mode {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.dark-mode .sidebar {
+    background: #333;
+}
+
+.troubleshoot-section {
+    display: none;
+    text-align: left;
+    padding: 10px;
+}
+
+.chatbox {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: #eef;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.message {
+    background: #0a81ff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: block;
+    max-width: 80%;
+}
+
+.user-message {
+    background: #444;
+    color: white;
+    margin-left: auto;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.faq-section {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.faq-question {
+    font-weight: bold;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.faq-answer {
+    display: none;
+    margin-bottom: 10px;
+}
+
+/* Typing animation */
+.typing {
+    color: #888;
+    font-style: italic;
+}
+
+/* Reset button */
+.reset-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.reset-button:hover {
+    background: #ff6d6d;
+}
+
+/* Suggestions dropdown */
+#suggestions {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 70%;
+    z-index: 1000;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:hover {
+    background: #f0f0f0;
+}

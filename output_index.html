@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Troubleshooting Assistant</title>
+    <link rel="stylesheet" href="output_styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>IT Troubleshooting</h2>
+        <button onclick="window.location.href='aboutus_index.html'">🏠 Home</button> <!-- Link to About Us Page -->
+        <button onclick="toggleSection('hardware')">🔧 Hardware Issues</button>
+        <button onclick="toggleSection('software')">💻 Software Issues</button>
+        <button onclick="toggleDarkMode()">🌙 Toggle Dark/Light Mode</button>
+        <button onclick="toggleSection('Researchers')">📌 Researchers</button>
+    </div>
+
+    <div class="container">
+        <h1>Welcome to the IT Troubleshooting Assistant</h1>
+
+        <div id="hardware" class="troubleshoot-section">
+            <h3>🔧 Hardware Problems</h3>
+            <ul>
+                <li>Computer won't turn on</li>
+                <li>Black screen on startup</li>
+                <li>CPU Overheating</li>
+                <li>Keyboard not working</li>
+                <li>Mouse not responding</li>
+                <li>USB device not recognized</li>
+                <li>Printer not working</li>
+                <li>Monitor flickering</li>
+                <li>Hard drive not detected</li>
+            </ul>
+        </div>
+
+        <div id="software" class="troubleshoot-section">
+            <h3>💻 Software Problems</h3>
+            <ul>
+                <li>No internet</li>
+                <li>WiFi not working</li>
+                <li>Slow PC</li>
+                <li>Software crashing frequently</li>
+                <li>Blue screen errors</li>
+                <li>Sound not working</li>
+                <li>Antivirus issues</li>
+                <li>Files missing or corrupted</li>
+                <li>No display</li>
+            </ul>
+        </div>
+        
+        <div id="Researchers" class="troubleshoot-section">
+            <h3>📌 Researchers</h3>
+            <ul>
+                <li>Earl Anthony T. Tangilon</li>
+                <li>Francine Rizza A. Arevalo</li>
+                <li>Mary Elizabeth P. Serrano</li>
+                <li>John Ryan B. Lunas</li>
+                <li>Jhonrey Quimm C. Tibi</li>
+            </ul>
+        </div>
+
+        <h2>Chat with AI</h2>
+        <div class="chatbox" id="chatbox">
+            <p class="message">👋 Hi! What IT issue are you facing?</p>
+        </div>
+        <input type="text" id="userInput" placeholder="Describe your issue..." oninput="showSuggestions()">
+        <div id="suggestions"></div>
+        <button onclick="sendMessage()">Send</button>
+        <button class="reset-button" onclick="resetChat()">Reset Chat</button>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <p class="faq-question" onclick="toggleFAQ(1)">❓ How do I fix a slow PC?</p>
+            <p class="faq-answer" id="faq1">Close unnecessary programs, clear temporary files, update drivers, and scan for malware.</p>
+
+            <p class="faq-question" onclick="toggleFAQ(2)">❓ What should I do if my WiFi stops working?</p>
+            <p class="faq-answer" id="faq2">Restart your router, ensure you're connected to the right network, and update your network drivers.</p>
+
+            <p class="faq-question" onclick="toggleFAQ(3)">❓ How do I fix a black screen issue?</p>
+            <p class="faq-answer" id="faq3">Check monitor cables, restart in Safe Mode, and update graphics drivers.</p>
+        </div>
+    </div>
+
+    <script src="output_script.js"></script>
+</body>
+</html>
